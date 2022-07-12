@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
-import {mobile} from "../responsive";
+import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-
   return (
     <Container>
       <Wrapper>
@@ -20,8 +20,12 @@ const Navbar = () => {
           <Logo>Thilak</Logo>
         </Center>
         <Right>
-          <MenuItem>Register</MenuItem>
+          <Link to={`/register`}>
+            <MenuItem>Register</MenuItem>
+          </Link>
+          <Link to={`/login`}>
           <MenuItem>SIGN IN</MenuItem>
+          </Link>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
@@ -35,11 +39,10 @@ const Navbar = () => {
 
 export default Navbar;
 
-
 // styled Components
 const Container = styled.div`
   height: 60px;
-  ${mobile({height:"50px"})}
+  ${mobile({ height: "50px" })}
 `;
 
 const Wrapper = styled.div`
@@ -47,7 +50,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${mobile({padding:"10px 0px"})}
+  ${mobile({ padding: "10px 0px" })}
 `;
 
 const Left = styled.div`
@@ -58,8 +61,7 @@ const Left = styled.div`
 const Languages = styled.span`
   font-size: 14px;
   cursor: pointer;
-  ${mobile({display:"none"})}
-
+  ${mobile({ display: "none" })}
 `;
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
@@ -70,7 +72,7 @@ const SearchContainer = styled.div`
 `;
 const Input = styled.input`
   border: none;
-  ${mobile({width:"50px"})}
+  ${mobile({ width: "50px" })}
 `;
 
 const Center = styled.div`
@@ -80,7 +82,7 @@ const Center = styled.div`
 const Logo = styled.span`
   font-size: 20px;
   font-weight: bold;
-  ${mobile({fontSize:"24px"})}
+  ${mobile({ fontSize: "24px" })}
 `;
 
 const Right = styled.div`
@@ -89,11 +91,11 @@ const Right = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex:2, justifyContent:"center"})}
+  ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
-  margin-left:25px;
-  ${mobile({fontSize:"12px", marginLeft:"10px"})}
+  margin-left: 25px;
+  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
