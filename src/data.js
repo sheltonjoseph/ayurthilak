@@ -28,17 +28,20 @@ export const categories =[
     {
         id:1,
         img:"/images/Mainimg-1.jpg",
-        title:"Fertility"
+        title:"Fertility",
+        cat:"women"
     },
     {
         id:2,
         img:"/images/Mainimg-2.jpg",
-        title:"Detox"
+        title:"Detox",
+        cat:"coat"
     },
     {
         id:3,
         img:"/images/Mainimg-3.jpg",
-        title:"Night Serum"
+        title:"Night Serum",
+        cat:"jeans"
     }
 ]
 
