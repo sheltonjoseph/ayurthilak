@@ -8,6 +8,9 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { publicRequest } from "../requestMethods";
+import {addProduct} from '../redux/cartRedux';
+import {useDispatch} from 'react-redux';
+
 
 const Product = () => {
   const location = useLocation();
@@ -16,6 +19,9 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const[quantity,setQuantity] = useState(1)
+  const [color,setColor] = useState("");
+  const [size,setSize] = useState("");
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getProduct = async () => {
@@ -38,6 +44,10 @@ const handleQuantity = (type) =>{
   }
 }
 
+const handleClick =() => {
+dispatch(addProduct({...product,quantity,color,size}))
+}
+
   return (
     <Container>
       <Navbar />
@@ -54,14 +64,14 @@ const handleQuantity = (type) =>{
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} key={c} />
+                <FilterColor color={c} key={c} onClick={()=>setColor(c)} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
                 {product.size?.map((s) => (
-                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                  <FilterSizeOption key={s} onChange={(e)=>setSize(e.target.value)}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
@@ -72,7 +82,7 @@ const handleQuantity = (type) =>{
               <Amount>{quantity}</Amount>
               <Add  onClick ={()=>handleQuantity("inc")}/>
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
