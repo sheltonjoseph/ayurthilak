@@ -32,11 +32,13 @@ const Navbar = () => {
           <Link to={`/login`}>
           <MenuItem>SIGN IN</MenuItem>
           </Link>
+          <Link to ='/cart'>
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
